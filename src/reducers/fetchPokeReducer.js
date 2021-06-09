@@ -11,10 +11,8 @@ const reducer = (state = initialState, action) => {
         case FETCH_START:
             return state;
         case FETCH_SUCCESS:
-            console.log("In Fetch");
             const data = action.payload;
-            console.log(data);
-
+            
             return {
                 ...state,
                 pokeList: [

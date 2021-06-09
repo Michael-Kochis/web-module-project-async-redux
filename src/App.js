@@ -4,7 +4,8 @@ import PokeList from './components/pokeList'
 function App() {
   return (
     <div className="App">
-       <PokeList />
+      <h1>PokeList</h1>
+      <PokeList />
     </div>
   );
 }

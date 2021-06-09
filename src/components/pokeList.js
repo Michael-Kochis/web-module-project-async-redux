@@ -8,19 +8,17 @@ import { fetchSuccess } from '../actions/fetchPokeAction'
 function PokeList(props) {
 
     useEffect(() => {
-        axios.get("https://pokeapi.co/api/v2/pokemon/1")
-            .then((result) => {
-                props.fetchSuccess(result.data);
-            }).catch((err) => alert(err))
+        for (let i=1; i <= 898; i++) { 
+            axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
+                .then((result) => {
+                    props.fetchSuccess(result.data);
+                }).catch((err) => alert(err))
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    console.log("Props.pokeList");
-    console.log(props.pokeList);
-
     return (
         <div id="pokeList">
-            This is the PokeList.
             {props.pokeList.map((item) => <Pokemon key={item.id} pokemon={item} />)}
         </div>
     )
