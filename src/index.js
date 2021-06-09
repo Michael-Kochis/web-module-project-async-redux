@@ -5,11 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 /* React-Redux imports */
-import { createStore } from 'redux'
+import { applyMiddleware, createStore } from 'redux';
 import { Provider} from 'react-redux';
-import { reducer } from './reducers/fetchPokeReducer'
+import { reducer } from './reducers/fetchPokeReducer';
+import thunk from 'redux-thunk';
 
-export const store = createStore(reducer);
+export const store = createStore(reducer, applyMiddleware(thunk) );
 
 ReactDOM.render(
   <React.StrictMode>

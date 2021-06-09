@@ -1,20 +1,14 @@
 import React, { useEffect } from 'react'
-import axios from 'axios'
 import Pokemon from './pokemon'
 
 import { connect } from 'react-redux'
-import { fetchSuccess } from '../actions/fetchPokeAction'
+import { getPokemon } from '../actions/fetchPokeAction'
 
 function PokeList(props) {
 
     useEffect(() => {
-        for (let i=1; i <= 898; i++) { 
-            axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
-                .then((result) => {
-                    props.fetchSuccess(result.data);
-                }).catch((err) => alert(err))
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        props.getPokemon();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -30,4 +24,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { fetchSuccess })(PokeList)
+export default connect(mapStateToProps, { getPokemon })(PokeList)
