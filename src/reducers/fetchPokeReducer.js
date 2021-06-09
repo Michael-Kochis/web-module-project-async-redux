@@ -1,9 +1,7 @@
 import { FETCH_FAIL, FETCH_START, FETCH_SUCCESS } from '../actions/fetchPokeAction'
 
 const initialState = {
-    name: "",
-    id: 0,
-    img: ""
+    pokeList: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -16,12 +14,13 @@ const reducer = (state = initialState, action) => {
             console.log("In Fetch");
             const data = action.payload;
             console.log(data);
-            
+
             return {
                 ...state,
-                name: data.name,
-                id: data.id,
-                //img: data.spirtes.front_default
+                pokeList: [
+                    ...state.pokeList,
+                    data
+                ]
             }
         default: 
             return state
